@@ -117,5 +117,5 @@ public class Exercicios {
 		}
 
 	}
-} // fecha o método main e a classe
+} 
 
