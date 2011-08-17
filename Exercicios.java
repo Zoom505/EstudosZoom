@@ -5,19 +5,17 @@ import javax.swing.JOptionPane;
 public class Exercicios {
 	public static void main(String[] args) {
 
-		int pagamento = 0;
-
-		pagamento = Integer.parseInt(JOptionPane.showInputDialog(null,
+		int pagamento = Integer.parseInt(JOptionPane.showInputDialog(null,
 				"Digite o valor do pagamento (Máx. 50.000)"));
 
-		if (pagamento > 0 && pagamento < 50001) {
+		if (pagamento > 0 && pagamento <= 50000) {
 
-			int numeroDeMoedas = 0;
-			numeroDeMoedas = Integer.parseInt(JOptionPane.showInputDialog(null,
+			int numeroDeMoedas = Integer.parseInt(JOptionPane.showInputDialog(
+					null,
 					"Digite a quantidade de moedas existentes em seu País "
 							+ "(Máx. 100 moedas diferentes"));
 
-			if (numeroDeMoedas > 0 && numeroDeMoedas < 101) {
+			if (numeroDeMoedas > 0 && numeroDeMoedas <= 100) {
 
 				int arrayDasMoedas[] = new int[numeroDeMoedas];
 
@@ -28,9 +26,7 @@ public class Exercicios {
 				String tar = valorDasMoedas;
 				String valorIndividualMoeda[] = tar.split("\\,");
 
-				int contagemDeNumeroDeMoedas = 0;
-
-				contagemDeNumeroDeMoedas = valorDasMoedas.split("\\,").length;
+				int contagemDeNumeroDeMoedas = valorDasMoedas.split("\\,").length;
 
 				if (contagemDeNumeroDeMoedas == numeroDeMoedas) {
 
@@ -40,7 +36,7 @@ public class Exercicios {
 						arrayDasMoedas[numeroDentroDoArray] = Integer
 								.parseInt(valorIndividualMoeda[numeroDentroDoArray]);
 
-						numeroDentroDoArray = numeroDentroDoArray + 1;
+						numeroDentroDoArray = ++numeroDentroDoArray;
 					}
 
 					Arrays.sort(arrayDasMoedas);
@@ -50,11 +46,10 @@ public class Exercicios {
 
 					while (numeroDentroDoArray > 0) {
 
-						numeroDentroDoArray = numeroDentroDoArray - 1;
+						numeroDentroDoArray = --numeroDentroDoArray;
 						moedasUtilizadas[numeroDentroDoArray] = pagamento
 								/ arrayDasMoedas[numeroDentroDoArray];
-						pagamento = pagamento
-								% arrayDasMoedas[numeroDentroDoArray];
+						pagamento = pagamento % arrayDasMoedas[numeroDentroDoArray];
 
 					}
 
@@ -62,7 +57,7 @@ public class Exercicios {
 
 						numeroDentroDoArray = numeroDeMoedas;
 						while (numeroDentroDoArray > 0) {
-							numeroDentroDoArray = numeroDentroDoArray - 1;
+							numeroDentroDoArray = --numeroDentroDoArray;
 							if (moedasUtilizadas[numeroDentroDoArray] != 0) {
 
 								System.out.println("Você precisará de "
@@ -117,5 +112,4 @@ public class Exercicios {
 		}
 
 	}
-} 
-
+}
